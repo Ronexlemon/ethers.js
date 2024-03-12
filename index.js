@@ -45,6 +45,11 @@ const convertToEtherspecificUnit =async(amount)=>{
     return  ethers.parseUnits(amount,10)
 }
 
+//signing a message
+const signMessage = async (message)=> {  
+    let signature = (await signer).signMessage("Yollow the way forward")
+return signature}
+
 (async function  connect(){
     console.log(await provider.getBlock())// get blocknumber
     console.log("signer is ",await provider.getSigner())  // get signer
@@ -56,6 +61,7 @@ const convertToEtherspecificUnit =async(amount)=>{
     // getDaiSymbol()
     console.log("convert to ether",await convertToEther("10"))
     console.log("convert to ether",await convertToEtherspecificUnit("20"))
+   // console.log("sign message",await signMessage())
 
 
 })()
