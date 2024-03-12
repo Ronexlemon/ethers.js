@@ -40,6 +40,10 @@ const getDaiSymbol = async()=>{
 const convertToEther =async(amount)=>{
     return  ethers.parseEther(amount)
 }
+//convert to specific decimal numbers
+const convertToEtherspecificUnit =async(amount)=>{
+    return  ethers.parseUnits(amount,10)
+}
 
 (async function  connect(){
     console.log(await provider.getBlock())// get blocknumber
@@ -51,5 +55,7 @@ const convertToEther =async(amount)=>{
     sendTransaction(await getAccounts(),"10")
     // getDaiSymbol()
     console.log("convert to ether",await convertToEther("10"))
+    console.log("convert to ether",await convertToEtherspecificUnit("20"))
+
 
 })()
