@@ -4,4 +4,5 @@ const provider = new ethers.JsonRpcProvider(); // connect to port 8545 localhoas
 
 (async function  connect(){
     console.log(await provider.getBlock())// get blocknumber
+    console.log("signer is ",await provider.getSigner())  // get signer
 })()
