@@ -6,7 +6,8 @@ const {daiAbi,daiAddress} = require("./Contract/abi/dai")
 const provider = new ethers.JsonRpcProvider(); // connect to port 8545 localhoast 
 
 const signer = provider.getSigner();
-const daiContract =new ethers.Contract(daiAddress,daiAbi,provider)
+const daiContract =new ethers.Contract(daiAddress,daiAbi,provider) // readonly
+const daiContractWithSigner = daiContract.connect(signer) //write
 //get balance
 const getAccountBalance= async (account) =>{
     return await provider.getBalance(account);
@@ -45,6 +46,6 @@ const getDaiSymbol = async()=>{
     console.log("account balance",await getAccountBalance(await getAddress())) // account balance
     console.log("get list of accounts",await getAccounts())
     sendTransaction(await getAccounts(),"10")
-     getDaiSymbol()
+    // getDaiSymbol()
 
 })()
