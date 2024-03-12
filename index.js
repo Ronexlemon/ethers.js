@@ -36,7 +36,10 @@ const getDaiSymbol = async()=>{
     console.log("symbol",symbol)
 }
 
-//getuserDaiBalance
+//convert to ether unit
+const convertToEther =async(amount)=>{
+    return  ethers.parseEther(amount)
+}
 
 (async function  connect(){
     console.log(await provider.getBlock())// get blocknumber
@@ -47,5 +50,6 @@ const getDaiSymbol = async()=>{
     console.log("get list of accounts",await getAccounts())
     sendTransaction(await getAccounts(),"10")
     // getDaiSymbol()
+    console.log("convert to ether",await convertToEther("10"))
 
 })()
