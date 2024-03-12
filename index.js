@@ -13,11 +13,17 @@ const getAddress = async ()=>{
     return (await provider.getSigner()).address;
 }
 
+//get Accounts
+const getAccounts =async()=>{
+    const accounts = await  provider.listAccounts();
+   return accounts[0].address;
+}
 (async function  connect(){
     console.log(await provider.getBlock())// get blocknumber
     console.log("signer is ",await provider.getSigner())  // get signer
     console.log("block number",await provider.getBlockNumber()) // block number
     console.log("account address",await getAddress())
     console.log("account balance",await getAccountBalance(await getAddress())) // account balance
+    console.log("get list of accounts",await getAccounts())
 
 })()
