@@ -6,6 +6,7 @@ const {CreateNewWallet,encrypt} =require("./wallet/wallet")
 
 const provider = new ethers.JsonRpcProvider(); // connect to port 8545 localhoast 
 
+
 const signer = provider.getSigner();
 const daiContract =new ethers.Contract(daiAddress,daiAbi,provider) // readonly
 const daiContractWithSigner = daiContract.connect(signer) //write
