@@ -1,6 +1,6 @@
 const {ethers} = require("ethers")
 const {daiAbi,daiAddress} = require("./Contract/abi/dai")
-const {CreateNewWallet} =require("./wallet/wallet")
+const {CreateNewWallet,encrypt} =require("./wallet/wallet")
 
 
 
@@ -74,6 +74,6 @@ const createWallet=async()=>{
    // console.log("sign message",await signMessage())
    //new wallet
   createWallet()
-
+   
 
 })()
