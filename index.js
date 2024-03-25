@@ -1,6 +1,7 @@
 const {ethers} = require("ethers")
 const {daiAbi,daiAddress} = require("./Contract/abi/dai")
 const {CreateNewWallet,encrypt} =require("./wallet/wallet")
+const {keccak256Hash}= require("./cryptography/cryptog") 
 
 
 
@@ -61,20 +62,27 @@ const createWallet=async()=>{
     console.log("address:",address)
     console.log("mnemonic:",mnemonic)
 }
+
+//hash a value
+const hashValue =async(value)=>{
+    const hash = await keccak256Hash(value)
+    return hash;
+}
 (async function  connect(){
-    console.log(await provider.getBlock())// get blocknumber
-    console.log("signer is ",await provider.getSigner())  // get signer
-    console.log("block number",await provider.getBlockNumber()) // block number
-    console.log("account address",await getAddress())
-    console.log("account balance",await getAccountBalance(await getAddress())) // account balance
-    console.log("get list of accounts",await getAccounts())
-    sendTransaction(await getAccounts(),"10")
-    // getDaiSymbol()
-    console.log("convert to ether",await convertToEther("10"))
-    console.log("convert to ether",await convertToEtherspecificUnit("20"))
-   // console.log("sign message",await signMessage())
-   //new wallet
-  createWallet()
+//     console.log(await provider.getBlock())// get blocknumber
+//     console.log("signer is ",await provider.getSigner())  // get signer
+//     console.log("block number",await provider.getBlockNumber()) // block number
+//     console.log("account address",await getAddress())
+//     console.log("account balance",await getAccountBalance(await getAddress())) // account balance
+//     console.log("get list of accounts",await getAccounts())
+//     sendTransaction(await getAccounts(),"10")
+//     // getDaiSymbol()
+//     console.log("convert to ether",await convertToEther("10"))
+//     console.log("convert to ether",await convertToEtherspecificUnit("20"))
+//    // console.log("sign message",await signMessage())
+//    //new wallet
+//   createWallet()
+console.log("kecka256 hash",await hashValue("0x"))
    
 
 })()
