@@ -1,7 +1,7 @@
 const {ethers} = require("ethers")
 const {daiAbi,daiAddress} = require("./Contract/abi/dai")
 const {CreateNewWallet,encrypt} =require("./wallet/wallet")
-const {keccak256Hash}= require("./cryptography/cryptog") 
+const {keccak256Hash, randomNumber}= require("./cryptography/cryptog") 
 
 
 
@@ -68,6 +68,11 @@ const hashValue =async(value)=>{
     const hash = await keccak256Hash(value)
     return hash;
 }
+//random number
+const random=async()=>{
+    const num = randomNumber();
+    return num
+}
 (async function  connect(){
 //     console.log(await provider.getBlock())// get blocknumber
 //     console.log("signer is ",await provider.getSigner())  // get signer
@@ -83,6 +88,7 @@ const hashValue =async(value)=>{
 //    //new wallet
 //   createWallet()
 console.log("kecka256 hash",await hashValue("0x"))
+console.log("random number", await random())
    
 
 })()
