@@ -1,9 +1,10 @@
 const {ethers} = require("ethers")
 const {daiAbi,daiAddress} = require("./Contract/abi/dai")
-const {CreateNewWallet,encrypt} =require("./wallet/wallet")
+const {CreateNewWallet,encrypt, createFromMnemonic} =require("./wallet/wallet")
 const {keccak256Hash, randomNumber}= require("./cryptography/cryptog") 
 
 
+const entropy = "0x0123456789abcdef0123456089abcdef";
 
 const provider = new ethers.JsonRpcProvider(); // connect to port 8545 localhoast 
 
@@ -73,6 +74,11 @@ const random=async()=>{
     const num = randomNumber();
     return num
 }
+//mnemonic
+const fromMnemonic = async()=>{
+    const pass = await createFromMnemonic(entropy,"lemonr");
+    return pass;
+}
 (async function  connect(){
 //     console.log(await provider.getBlock())// get blocknumber
 //     console.log("signer is ",await provider.getSigner())  // get signer
@@ -89,6 +95,7 @@ const random=async()=>{
 //   createWallet()
 console.log("kecka256 hash",await hashValue("0x"))
 console.log("random number", await random())
+console.log("password:",await fromMnemonic())
    
 
 })()

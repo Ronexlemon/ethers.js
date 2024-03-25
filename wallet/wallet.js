@@ -1,4 +1,4 @@
-const {Wallet, N} = require("ethers")
+const {Wallet, BaseWallet,Mnemonic, isBytesLike, keccak256} = require("ethers")
 
 const CreateNewWallet = async()=>{
     const wallet = Wallet.createRandom();  //Creates a new random()
@@ -30,4 +30,14 @@ const json = wallet.encrypt(password, {
    return json;
 }
 
-module.exports={CreateNewWallet,encrypt};
+//create wallet from baseWallet
+
+const  createFromMnemonic=async(entropy,password)=>{
+  const d = Mnemonic.fromEntropy(entropy,password)
+  return d.phrase;
+  
+}
+
+
+module.exports={CreateNewWallet,encrypt,
+createFromMnemonic};
